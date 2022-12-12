@@ -1,0 +1,8 @@
+@import '../../styles/colors.scss';
+
+.boton-regresar {
+  display: flex;
+  color: $red-primary;
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -1,0 +1,67 @@
+URL: API
+http://condor1683.startdedicated.com:8089/api/v1/
+
+--Eliminar Poliza
+http://condor1683.startdedicated.com:8089/api/v1/polizas/3
+Method: DELETE
+
+--Nueva Poliza
+http://condor1683.startdedicated.com:8089/api/v1/polizas
+Method: POST
+--Los ids deven ir en ceros por que es nueva, este metodo solo agrega polizas no actualiza
+{
+    "poliza_id": 0,
+    "estatus": 1,
+    "cantidad": 10,
+    "polizaDetalle": [
+        {
+            "polizadetalle_id": 0,
+            "estatus": 1,
+            "cantidad": 9,
+            "sku_id": {                
+                "sku_id": 6
+            },
+            "empleado_id": {                
+                "empleado_id": 1
+            }
+        }
+    ]
+}
+
+--Actualizar Poliza
+http://condor1683.startdedicated.com:8089/api/v1/polizas/5
+Method: PUT
+--Puedes agregar o actualizar un detalle
+{
+    "poliza_id": 5,
+    "estatus": 1,    
+    "cantidad": 2,
+    "polizaDetalle": [     
+        {
+            "polizadetalle_id": 0,
+            "estatus": 1,
+            "cantidad": 7,
+            "sku_id": {
+                "sku_id": 2
+            },
+            "empleado_id": {
+                "empleado_id": 4
+            }
+        },
+        {
+            "polizadetalle_id": 7,
+            "estatus": 1,
+            "cantidad": 2,
+            "sku_id": {
+                "sku_id": 6
+            },
+            "empleado_id": {
+                "empleado_id": 1
+            }
+        }
+    ]
+}
+
+--Eliminar un detalle de la Poliza
+http://condor1683.startdedicated.com:8089/api/v1/polizasdetalle/3
+Method: DELETE

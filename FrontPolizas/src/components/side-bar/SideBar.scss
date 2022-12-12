@@ -1,0 +1,52 @@
+@import '../../styles/colors.scss';
+
+.sidebar {
+  flex: 1 0 80px;
+  max-width: 80px;
+  background-color: $gray-0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+
+  >* {
+    margin-left: -10px;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+    background: $blue-dark;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, $blue-primary 53%, $blue-dark 100%);
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      background: url('https://pixy.org/download/326607/');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 25px;
+    }
+
+    border-radius: 25px;
+
+  }
+
+  button {
+    color: $gray-5;
+
+    &.selected {
+      color: $blue-medium;
+    }
+
+    &:not(.selected):hover {
+      background-color: $gray-2;
+    }
+
+    .material-icons {
+      font-size: 25px;
+    }
+  }
+}

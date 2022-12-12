@@ -1,0 +1,37 @@
+@import '../../styles/colors.scss';
+
+.dropdown {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.table-respo {
+  background-color: $gray-3;
+  border-radius: 1em;
+}
+
+.cajabusqueda {
+  background-color: white;
+  max-width: 70px;
+}
+
+.cajacantidad {
+  background-color: white;
+  max-width: 120px;
+}
+
+.cajablanca {
+  background-color: white;
+}
+
+.cajadesactivada {
+  pointer-events: none;
+}
+
+.cursospointer {
+  cursor: pointer;
+}
+
+.minimocolumna {
+  min-width: 350px;
+}

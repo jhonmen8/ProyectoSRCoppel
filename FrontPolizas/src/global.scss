@@ -1,0 +1,89 @@
+@import "./styles/colors.scss";
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+
+$theme-colors: (
+  "primary": $blue-primary,
+  "primary-light": $blue-light,
+  "secondary": $gray-3,
+  "gray": $gray-1,
+  "gray-5": $gray-5,
+  "red-light": $blue-light
+);
+
+// Buttons
+$btn-border-radius: 25px;
+$btn-padding-y: 10px;
+$btn-padding-x: 15px;
+$btn-font-size: 14px;
+
+@import "~bootstrap/scss/bootstrap";
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: $gray-2;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+}
+
+.btn svg {
+  font-size: 1.2em;
+  margin-right: 6px;
+}
+
+.heading-1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: $blue-primary;
+}
+
+.red-dark {
+  color: $blue-dark;
+}
+
+.colorgray2 {
+  background-color: $gray-2;
+}
+
+tbody::before {
+  content: '';
+  display: block;
+  height: 15px;
+}
+
+td,
+th {
+  border-style: none;
+  vertical-align: middle;
+}
+
+.borderradiuslefttop {
+  border-top-left-radius: 1em;
+}
+
+.borderradiusrigthtop {
+  border-top-right-radius: 1em;
+}
+
+.borderradiusleftbuttom {
+  border-bottom-left-radius: 1em;
+}
+
+.borderradiusrigthbuttom {
+  border-bottom-right-radius: 1em;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.nodatos {
+  text-align: center;
+  height: 150px;
+}
