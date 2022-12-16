@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -26,10 +29,12 @@ public class PolizasDetalleController {
     
     @Autowired
     private PolizaDetalleService service;
-    
+    private static final Logger LOGGER = LogManager.getLogger(PolizasDetalleController.class.getName());
+
     
     @DeleteMapping(value = "polizasdetalle/{id:[\\d]+}")
     public ResponseEntity<Object> eliminarPolizas(@PathVariable Long id )  {
+        LOGGER.log(Level.INFO, "eliminarPolizas");
         HttpHeaders httpHeaders =  new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         return new ResponseEntity<>(new ApiResponse(new Meta("OK", HttpStatus.OK.value() , ""), service.eliminarPolizaDetalle(id)), httpHeaders, HttpStatus.OK);

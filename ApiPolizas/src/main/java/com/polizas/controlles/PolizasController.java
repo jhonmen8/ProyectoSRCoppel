@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  *
  * @author jhonatan.mendez
@@ -30,12 +32,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class PolizasController {
     
     @Autowired    
-    private PolizaService polizaService;
+    private PolizaService polizaService;    
+    private static final Logger LOGGER = LogManager.getLogger(PolizasController.class.getName());
+
     
     @GetMapping(value={"/polizas", "polizas/{id:[\\d]+}"})
     public ResponseEntity<Object> consultarPolizas(@PathVariable(name = "id", required = false) Long id)  {        
         HttpHeaders httpHeaders =  new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);       
+        LOGGER.log(Level.INFO, "consultarPolizas");
+
         if (id == null)
             return new ResponseEntity<>(new ApiResponse(new Meta("OK", HttpStatus.OK.value() , ""), polizaService.consultarPolizas()), httpHeaders, HttpStatus.OK);
         else

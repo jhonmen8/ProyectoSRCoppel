@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -26,11 +29,14 @@ public class InventariosController {
     
     @Autowired
     private InventarioService inventarioService;
-    
+    private static final Logger LOGGER = LogManager.getLogger(InventariosController.class.getName());
+
     @GetMapping(value={"/inventarios", "inventarios/{id:[\\d]+}"})
     public ResponseEntity<Object> consultarInventario(@PathVariable(name = "id", required = false) Long id)  {        
         HttpHeaders httpHeaders =  new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);       
+        LOGGER.log(Level.INFO, "consultarInventario");
+
         if (id == null)
             return new ResponseEntity<>(new ApiResponse(new Meta("OK", HttpStatus.OK.value() , ""), inventarioService.consultarInventario()), httpHeaders, HttpStatus.OK);
         else

@@ -16,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  *
  * @author jhonatan.mendez
@@ -26,11 +28,15 @@ public class EmpleadosController {
     
     @Autowired
     private EmpleadoService empleadoService;
-            
+    private static final Logger LOGGER = LogManager.getLogger(EmpleadosController.class.getName());
+
+    
     @GetMapping(value={"/empleados", "empleados/{id:[\\d]+}"})
     public ResponseEntity<Object> consultarEmpleados(@PathVariable(name = "id", required = false) Long id)  {        
         HttpHeaders httpHeaders =  new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);       
+        LOGGER.log(Level.INFO, "consultarEmpleados");
+
         if (id == null)
             return new ResponseEntity<>(new ApiResponse(new Meta("OK", HttpStatus.OK.value() , ""), empleadoService.consultarEmpleados()), httpHeaders, HttpStatus.OK);
         else

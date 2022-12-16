@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class PolizaServiceImp implements PolizaService{
     @Override
     public PolizaDTO consultarPolizaByID(Long id) {
         Optional<Poliza> poliza = repository.findById(id);
-        
+        LOGGER.log(Level.FATAL, HttpStatus.NOT_FOUND);
         if(poliza.isPresent()){
             return new ModelMapper().map(poliza.get(), PolizaDTO.class);
         }else{
